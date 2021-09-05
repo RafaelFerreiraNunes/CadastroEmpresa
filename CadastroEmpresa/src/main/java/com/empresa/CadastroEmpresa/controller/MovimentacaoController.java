@@ -1,6 +1,7 @@
 package com.empresa.CadastroEmpresa.controller;
 
 import com.empresa.CadastroEmpresa.model.Movimentacao;
+import com.empresa.CadastroEmpresa.model.Movimentacao.MovimentacaoId;
 import com.empresa.CadastroEmpresa.service.MovimentacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,12 +33,12 @@ public class MovimentacaoController {
 
 
         @GetMapping("/{idmovimentacao}")
-        public ResponseEntity<Movimentacao> getJornadaById(@PathVariable("idmovimentacao") Long idmovimentacao) throws Exception{
+        public ResponseEntity<Movimentacao> getJornadaById(@PathVariable("idmovimentacao") MovimentacaoId idmovimentacao) throws Exception{
             return ResponseEntity.ok(movimentacaoService.getById(idmovimentacao).orElseThrow(() -> new Exception("jornada não encontrada.")));
         }
 
         @DeleteMapping("/{idmovimentacao}")
-        public ResponseEntity<Movimentacao> deleteById(@PathVariable("idmovimentacao") Long idmovimentacao) throws Exception{
+        public ResponseEntity<Movimentacao> deleteById(@PathVariable("idmovimentacao") MovimentacaoId idmovimentacao) throws Exception{
             try {
                 movimentacaoService.deleteMovimentacao(idmovimentacao);
             } catch (Exception e){

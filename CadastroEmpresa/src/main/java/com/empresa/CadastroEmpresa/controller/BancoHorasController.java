@@ -1,6 +1,7 @@
 package com.empresa.CadastroEmpresa.controller;
 
 import com.empresa.CadastroEmpresa.model.BancoHoras;
+import com.empresa.CadastroEmpresa.model.BancoHoras.BancoHorasId;
 import com.empresa.CadastroEmpresa.service.BancoHorasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,12 +33,12 @@ public class BancoHorasController {
 
 
         @GetMapping("/{idbancohoras}")
-        public ResponseEntity<BancoHoras> getBancoHorasById(@PathVariable("idbancohoras") Long bancoHorasId) throws Exception{
+        public ResponseEntity<BancoHoras> getBancoHorasById(@PathVariable("idbancohoras") BancoHorasId bancoHorasId) throws Exception{
             return ResponseEntity.ok(bancoHorasService.getById(bancoHorasId).orElseThrow(() -> new Exception("banco não encontrado.")));
         }
 
         @DeleteMapping("/{idbancohoras}")
-        public ResponseEntity<BancoHoras> deleteById(@PathVariable("idbancohoras") Long bancoHorasId) throws Exception{
+        public ResponseEntity<BancoHoras> deleteById(@PathVariable("idbancohoras") BancoHorasId bancoHorasId) throws Exception{
             try {
                 bancoHorasService.deleteBancoHoras(bancoHorasId);
             } catch (Exception e){

@@ -1,6 +1,7 @@
 package com.empresa.CadastroEmpresa.service;
 
 import com.empresa.CadastroEmpresa.model.BancoHoras;
+import com.empresa.CadastroEmpresa.model.BancoHoras.BancoHorasId;
 import com.empresa.CadastroEmpresa.repository.BancoHorasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class BancoHorasService {
 
     public List<BancoHoras> findAll() {return bancoHorasRepository.findAll();}
 
-    public Optional<BancoHoras> getById(Long bancoHorasId){
+    public Optional<BancoHoras> getById(BancoHorasId bancoHorasId){
         return bancoHorasRepository.findById(bancoHorasId);
     }
 
@@ -28,7 +29,7 @@ public class BancoHorasService {
         return bancoHorasRepository.save(bancoHoras);
     }
 
-    public void deleteBancoHoras(Long bancoHorasId){
+    public void deleteBancoHoras(BancoHorasId bancoHorasId){
         bancoHorasRepository.deleteById(bancoHorasId);
     }
 }

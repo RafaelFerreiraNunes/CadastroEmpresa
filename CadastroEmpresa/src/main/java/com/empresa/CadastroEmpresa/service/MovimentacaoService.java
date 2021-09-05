@@ -1,6 +1,7 @@
 package com.empresa.CadastroEmpresa.service;
 
 import com.empresa.CadastroEmpresa.model.Movimentacao;
+import com.empresa.CadastroEmpresa.model.Movimentacao.MovimentacaoId;
 import com.empresa.CadastroEmpresa.repository.MovimentacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class MovimentacaoService {
 
     public List<Movimentacao> findAll() {return movimentacaoRepository.findAll();}
 
-    public Optional<Movimentacao> getById(Long id){
+    public Optional<Movimentacao> getById(MovimentacaoId id){
         return movimentacaoRepository.findById(id);
     }
 
@@ -28,7 +29,7 @@ public class MovimentacaoService {
         return movimentacaoRepository.save(movimentacao);
     }
 
-    public void deleteMovimentacao(Long id){
+    public void deleteMovimentacao(MovimentacaoId id){
         movimentacaoRepository.deleteById(id);
     }
 }
